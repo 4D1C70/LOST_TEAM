@@ -1,0 +1,98 @@
+<div class="container">
+    <h1>Nuevo Estacionamiento</h1>
+</div>
+<hr>
+
+<div class="container">
+<form action="#">
+
+  <div class="row">
+    <div class="col-sm-8">
+        <div class="input-group">
+            <span class="input-group-addon">Nombre</span>
+            <input id="parking_name" type="text" class="form-control" name="parking_name">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+          <select class="form-control" id="parking_type">
+              <option>-- Tipo --</option>
+              <option>Exterior</option>
+              <option>Interior</option>
+              <option>Aire libre</option>
+          </select>
+        </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-sm-8">
+        <div class="input-group">
+            <span class="input-group-addon">Dirección</span>
+            <input id="parking_address" type="text" class="form-control" name="parking_address">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <select class="form-control" id="parking_district">
+                <option>-- Distrito --</option>
+                <option>Callao</option>
+                <option>Miraflores</option>
+                <option>Surquillo</option>
+                <option>Ventanilla</option>
+            </select>
+        </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="row"><div class="col-sm-12"><%= render 'map' %></div></div>
+
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+       <div class="input-group">
+           <span class="input-group-addon">Dimensiones</span>
+           <input id="parking_size" type="text" class="form-control" name="parking_size">
+       </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="input-group">
+            <span class="input-group-addon">Precio por hora</span>
+            <input id="parking_price" type="text" class="form-control" name="parking_price">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="input-group">
+            <span class="input-group-addon">Teléfono</span>
+            <input id="parking_phone" type="text" class="form-control" name="parking_phone">
+        </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-sm-12">
+        <%= image_tag "parking.jpg", html: { alt: "parking" } %>
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+        <select class="form-control" id="parking_location">
+            <option>Sótano</option>
+            <option>Primer Piso</option>
+            <option>Segundo Piso</option>
+        </select>
+        </div>
+    </div>
+  </div>
+
+<br>
+<button type="submit" class="btn btn-default">Registrar</button>
+</form>
+<br>
+</div>

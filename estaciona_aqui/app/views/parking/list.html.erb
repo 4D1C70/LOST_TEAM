@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Listado de estacionamientos</h1>
+</div>
+<hr>
+
+<div class="container">
+    <table class="table table-hover col-sm-12">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Estacionamiento</th>
+          <th scope="col">Propietario</th>
+          <th scope="col">Disponibilidad</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Mantenimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Estacionamiento Yachay</td>
+          <td>Juan Perez</td>
+          <td>Disponible</td>
+          <td>987654321</td>
+          <td><a href="#"><%= link_to 'Editar', edit_parking_path %></a></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Estacionamiento Pukutay</td>
+          <td>Fulano de Tal</td>
+          <td>NO Disponible</td>
+          <td>912345678</td>
+          <td><a href="#"><%= link_to 'Editar', edit_parking_path %></a></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Estacionamiento Ransomware</td>
+          <td>Juan Perez</td>
+          <td>Disponible</td>
+          <td>987654321</td>
+          <td><a href="#"><%= link_to 'Editar', edit_parking_path %></a></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
