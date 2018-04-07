@@ -28,8 +28,16 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="./">Usuarios <span class="sr-only">(current)</span></a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li>
+              <%= link_to login_register_path, nil  do %>
+                <span class="glyphicon glyphicon-user"></span> Regístrate</a>                
+              <% end %>
+              </li>              
+              <li>
+                <%= link_to login_path, nil do %>
+                  <span class="glyphicon glyphicon-log-in"></span> Accede</a></li>
+                <% end %>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

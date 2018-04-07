@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get '/login/register' , controller: :login, action: :register, alias: 'register'
+
+  post :register, to: "login#create", as: :login_create
+
+  get '/login' , controller: :login, action: :login, alias: :'login'
+
   # get 'parking/new'
   get 'new_parking', controller: :parking, action: :new, alias: :'new_parking'
 
