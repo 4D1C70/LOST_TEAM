@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # get 'parking/new'
   get '/login/register' , controller: :login, action: :register, alias: 'register'
 
   post :register, to: "login#create", as: :login_create
@@ -22,6 +23,10 @@ Rails.application.routes.draw do
 
   # get 'static/services'
   get 'services', controller: :static, action: :services, alias: 'services'
+
+  get 'adittionalservices', controller: :parking, action: :adittionalservices, alias: 'adittionalservices'
+
+  get 'rent_parking', controller: :parking, action: :rent, alias: 'rent_parking'
 
   # get 'home/index'
   root 'home#index'
