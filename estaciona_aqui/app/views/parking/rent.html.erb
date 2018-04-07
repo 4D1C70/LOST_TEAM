@@ -1,0 +1,76 @@
+<% content_for :"head" do %>
+	<title>Alquiler de Estacionamiento</title>
+<% end %>
+
+ <div class="panel-group">
+    <div class="panel panel-info">
+      <div class="panel-heading">Registrar alquiler de estacionamiento</div>
+      <div class="panel-body form-horizontal">
+			<%= form_tag("/myform", method: "post") do %>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-10">
+				<%= label_tag(:parking, "Estacionamiento: ") %>
+				<%= text_field_tag(:parking, nil, size: "30x3") %> 
+				</div>
+			</div>
+			<div class="panel-group">
+			    <div class="panel panel-info">
+			     <div class="panel-heading">Datos del dueño</div>
+			     <div class="panel-body form-horizontal">
+			     	<div class="col-sm-offset-1 col-sm-8">
+
+			     	 <%= label_tag(:parking, "Nombre(s): ") %>
+				     <%= text_field_tag(:parking, nil, size: "30x3") %> <br>
+				     <%= label_tag(:parking, "Apellidos: ") %>	
+				     <%= text_field_tag(:parking, nil, size: "30x3") %> <br>
+				     <%= label_tag(:parking, "Telefono/celular: ") %>	 
+				     <%= text_field_tag(:parking, nil, size: "30x3") %> <br><br>
+				    </div>
+			      </div>
+			     </div>
+			 </div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-10">
+				<%= label_tag(:dateattention, "Fecha de atención: ") %>
+				<%= date_field(:dateattention, :born_on) %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-10">
+				<%= label_tag(:timettention, "Hora de atención: ") %>
+				<%= time_field(:timeattention, :time) %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-10">
+				<%= label_tag(:service_type, "Servicio adicinal: ") %>
+				<%= select_tag(:service_type, options_for_select([["Revision de llantas","r"],["Limpieza de vehículo","l"],["Otros","o"],["Ninguno","n"]])) %> <br>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-4">
+				<%= label_tag(:rang_durattion, "Rango de duracion Hrs: ") %>
+				<%= select_tag(:rang_durattion, options_for_select([["00-01","r"],["01-03","l"],["03-08","o"],["08-24","n"]])) %> <br>
+				
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-10">
+				<%= label_tag(:observations, "Observaciones: ") %><br>
+				<%= text_area_tag(:observations, nil, size: "100x5") %> <br>
+				</div>
+			</div>
+
+			<div class="form-group"> 
+				<div class="col-sm-offset-3 col-sm-10">
+				 <button type="submit" class="btn btn-default">Registrar</button>
+				 <button type="cancel" class="btn btn-default">Cancelar</button><br><br><br>
+				</div>
+			</div>
+		<% end %>
+
+		  </div>
+      </div>
+    </div>
+  </div>
