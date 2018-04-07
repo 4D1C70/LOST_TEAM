@@ -1,48 +1,11 @@
-<% content_for :"head" do %>
-	<title>Adittional Services</title>
+<%= content_for :head do%>
+    <title>About Us</title>
 <% end %>
 
- <div class="panel-group">
-    <div class="panel panel-info">
-      <div class="panel-heading">Registrar Servicios Adicionales</div>
-      <div class="panel-body form-horizontal">
-		<%= form_tag("/myform", method: "post") do %>
-			<div class="form-group">
-				<div class="col-sm-offset-1 col-sm-10">
-				<%= label_tag(:service_type, "Tipo de servicio adicinal: ") %>
-				<%= select_tag(:service_type, options_for_select([["Revision de llantas","r"],["Limpieza de vehículo","r"],["Otros","o"]])) %> <br>
-				</div>
-			</div>
+<%= content_for :intro do%>
+    <h1>Acerca de Nosotros</h1>
+    <h2>A muy buen precio</h2>
+<% end %>
 
-			<div class="form-group">
-				<div class="col-sm-offset-1 col-sm-2">
-				<%= label_tag(:comments, "Descripción del servicio adicinal: ") %>
-				<%= text_area_tag(:comments, nil, size: "100x5") %> <br>
-				</div>
-			</div>
 
-			<div class="form-group">
-				<div class="col-sm-offset-1 col-sm-10">
-				<%= label_tag(:price, "Tarifa S/. : ") %>
-				<%= number_field(:product, :price, in: 0.0..50.0, step: 5) %> <br>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-1 col-sm-10">
-				<%= label_tag(:parking, "Tus Estacionamientos: ") %>
-				<%= select_tag(:parking, options_for_select([["Playa de estacionamiento 1","r"],["Playa de Estacionamiento 2","r"]])) %> <br>
-				</div>
-			</div>
-
-			<div class="form-group"> 
-				<div class="col-sm-offset-3 col-sm-10">
-				 <button type="submit" class="btn btn-default">Registrar</button>
-				 <button type="cancel" class="btn btn-default">Cancelar</button>
-				</div>
-			</div>
-		<% end %>
-
-		  </div>
-      </div>
-    </div>
-  </div>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
