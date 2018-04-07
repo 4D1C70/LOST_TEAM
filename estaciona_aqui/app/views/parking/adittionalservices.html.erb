@@ -9,14 +9,14 @@
 		<%= form_tag("/myform", method: "post") do %>
 			<div class="form-group">
 				<div class="col-sm-offset-1 col-sm-10">
-				<%= label_tag(:service_type, "Tipo de servicio adicinal: ") %>
+				<%= label_tag(:service_type, "Tipo de servicio adicional: ") %>
 				<%= select_tag(:service_type, options_for_select([["Revision de llantas","r"],["Limpieza de vehículo","r"],["Otros","o"]])) %> <br>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-sm-offset-1 col-sm-2">
-				<%= label_tag(:comments, "Descripción del servicio adicinal: ") %>
+				<%= label_tag(:comments, "Descripción del servicio adicional: ") %>
 				<%= text_area_tag(:comments, nil, size: "100x5") %> <br>
 				</div>
 			</div>
