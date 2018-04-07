@@ -24,7 +24,13 @@ body {
 }
 /*form styles*/
 #msform {
-	width: 550px;
+	width: 650px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+#msform.login{
+	width: 450px;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
@@ -60,7 +66,7 @@ body {
 /*buttons*/
 #msform .action-button {
 	width: 100px;
-	background: #27AE60;
+	background: #1A1A1A;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -70,7 +76,7 @@ body {
 	margin: 10px 5px;
 }
 #msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #1A1A1A;
 }
 /*headings*/
 .fs-title {
@@ -131,7 +137,7 @@ body {
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before,  #progressbar li.active:after{
-	background: #27AE60;
+	background: #1A1A1A;
 	color: white;
 }
 
@@ -141,10 +147,11 @@ body {
 }
 
 .input-group-addon {
-    min-width: 150px;
+    min-width: 185px;
     text-align: left;
 }
 
-.input-group-addon .radio{	
-    width: 20px;
+.input-group-addon.login{
+    min-width: 20px;
+    text-align: left;
 }

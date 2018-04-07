@@ -9,6 +9,8 @@ $(function () {
 	// body...
 
 	$(".next").click(function(){
+		check_user_profiel();
+		
 		if(animating) return false;
 		animating = true;
 		
@@ -81,14 +83,22 @@ $(function () {
 		});
 	});
 
-	$(".submit").click(function(){
+	/*$(".submit").click(function(){
 		return false;
-	});
+	});*/
 
 });
+
+var check_user_profiel = function (){
+	if($("#user_profile").val() == "1"){
+			$("#client_extra").hide();
+		}
+	else{
+		$("#client_extra").show();			
+	}
+}
 </script>
 <!-- multistep form -->
-
 <%= form_tag(login_create_path, method: 'post', :id => "msform") do %>
 
   <!-- progressbar -->
@@ -116,7 +126,7 @@ $(function () {
 		    </div>
 		  	<div class="input-group">
 		  		<%= content_tag(:span, "Deseo: " , :class => "input-group-addon") %>
-				<%= select_tag(:document_type, options_for_select([["Anunciar un estacionamiento", "1"],["Alquilar un estacionamiento", "2"]]), {:class => "form-control"}) %>
+				<%= select_tag(:user_profile, options_for_select([["Anunciar un estacionamiento", "1"],["Alquilar un estacionamiento", "2"]]), {:class => "form-control"}) %>
 		    </div>
   	</div>  	
     <input type="button" name="next" class="next action-button" value="Siguiente" />
@@ -124,25 +134,11 @@ $(function () {
   <fieldset>
     <h2 class="fs-title">Datos Personales</h2>
     <h3 class="fs-subtitle">Paso 2</h3>
-		<div class="input-group ">
-	  		<%= content_tag(:span, "Sexo: " , :class => "input-group-addon") %>
-	  		<div class="input-bar">
-	  			<div class="input-bar-item width100">
-	  				<div class="input-group">
-  						<input type="radio" class="radio-inline ">	 
-  						<span class="input-group">
-	                  		<%= text_field_tag(:document_number, "", {:class => "form-control width100"}) %>
-	                	</span>
-  						<input type="radio" class="radio-inline ">	 
-  						<span class="input-group-btn">
-	                  		<button class="btn btn-info">MyButton</button>
-	                	</span>
-	  				</div>
-	  			</div>
-
-	  		</div>
-
+		<div class="input-group">
+	  		<%= content_tag(:span, "Sexo: " , :class => "input-group-addon mb-3") %>
+			
 		</div>
+
 		<div class="input-group"> 			
 	  		<%= content_tag(:span, "Tipo de Documento: " , :class => "input-group-addon") %>
 			<%= select_tag(:document_type, options_for_select([["DNI", "1"],["PASAPORTE", "2"],["CARNET DE EXTRANJERÍA", "3"]]), {:class => "form-control"}) %>
@@ -151,22 +147,50 @@ $(function () {
 	  		<%= content_tag(:span, "N° de documento: " , :class => "input-group-addon") %>
 	  		<%= text_field_tag(:document_number, "",{:class => "form-control"}) %>
 	    </div>
-	  	<div class="input-group">
-	  		<%= content_tag(:span, "Apellido Materno: " , :class => "input-group-addon") %>
-	  		<%= text_field_tag(:maternal_surname, "",{:class => "form-control"}) %>
+	    <div id="client_extra" style="display: none;">
+		  	<div class="input-group">
+		  		<%= content_tag(:span, "Dirección: " , :class => "input-group-addon") %>
+		  		<%= text_field_tag(:address, "",{:class => "form-control"}) %>
+		    </div>
+		  	<div class="input-group">
+		  		<%= content_tag(:span, "Distrito: " , :class => "input-group-addon") %>
+		  		<%= select_tag(:district, options_for_select([["LIMA-LIMA-LIMA", "150101"],["LIMA-LIMA-LA VICTORIA", "150202"],["LIMA-LIMA-INDEPENDENCIA", "150303"]]), {:class => "form-control"}) %>
+		    </div>	    	
 	    </div>
-
-		    
+	  	<div class="input-group">
+	  		<%= content_tag(:span, "N° de Celular: " , :class => "input-group-addon") %>
+	  		<%= text_field_tag(:mobile_number, "",{:class => "form-control"}) %>
+	    </div>
+	  	<div class="input-group">
+	  		<%= content_tag(:span, "Fecha de nacimiento: " , :class => "input-group-addon") %>
+	  		<%= date_field_tag(:birthdate, nil, {:class => "form-control"}) %>	  		
+	    </div>
     <input type="button" name="previous" class="previous action-button" value="Retroceder" />
     <input type="button" name="next" class="next action-button" value="Siguiente" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Datos de la cuenta</h2>
     <h3 class="fs-subtitle">Paso 3</h3>
-    <input type="text" name="fname" placeholder="First Name" />
-    <input type="text" name="lname" placeholder="Last Name" />
-    <input type="text" name="phone" placeholder="Phone" />
-    <textarea name="address" placeholder="Address"></textarea>
+  	<div class="input-group">
+  		<%= content_tag(:span, "Correo: " , :class => "input-group-addon") %>
+  		<%= text_field_tag(:email, "",{:class => "form-control"}) %>
+    </div>
+  	<div class="input-group">
+  		<%= content_tag(:span, "Confirmar Correo: " , :class => "input-group-addon") %>
+  		<%= text_field_tag(:email_confirm, "",{:class => "form-control"}) %>
+    </div>
+  	<div class="input-group">
+  		<%= content_tag(:span, "Contraseña: " , :class => "input-group-addon") %>
+  		<%= text_field_tag(:password, "",{:class => "form-control"}) %>
+    </div>
+  	<div class="input-group">
+  		<%= content_tag(:span, "Confirmar Contraseña: " , :class => "input-group-addon") %>
+  		<%= text_field_tag(:password_confirm, "",{:class => "form-control"}) %>
+    </div>
+  	<div class="input-group">
+  		<%= content_tag(:span, "Tipo de Usuario: " , :class => "input-group-addon") %>
+  		<%= select_tag(:user_type, options_for_select([["PREMIUM", "1"],["VIP", "2"],["REGULAR", "3"]]), {:class => "form-control"}) %>
+    </div>
     <input type="button" name="previous" class="previous action-button" value="Retroceder" />
     <input type="submit" name="submit" class="submit action-button" value="Enviar" />
   </fieldset>

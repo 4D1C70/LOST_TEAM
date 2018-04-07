@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get '/login/register' , controller: :login, action: :register, alias: 'register'
 
-  post :register, to: "login#create", as: :login_create
+  post :login, to: "login#create", as: :login_create
+  get :logout, to: "login#logout", as: :logout
+  get :login_profile, to: "login#profile", as: :login_profile
 
   get '/login' , controller: :login, action: :login, alias: :'login'
 

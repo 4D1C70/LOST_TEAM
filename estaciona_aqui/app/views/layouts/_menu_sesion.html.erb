@@ -28,16 +28,23 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="./">Usuarios <span class="sr-only">(current)</span></a></li>
-              <li>
-              <%= link_to login_register_path, nil  do %>
-                <span class="glyphicon glyphicon-user"></span> Regístrate</a>                
-              <% end %>
-              </li>              
+              <li>              
               <li>                
                 <%= link_to login_path, nil do %>
                   <span class="glyphicon glyphicon-log-in"></span> Accede</a></li>
                 <% end %>
               </li>
+              <ul class="nav navbar-nav">              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario ... <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Mis datos</li>
+                  <li><a href="#"><%= link_to 'Mi perfil', login_profile_path %></a></li>
+                  <li><a href="#"><%= link_to 'Cerrar sesión', logout_path %></a></li>
+                </ul>
+              </li>
+            </ul>
             </ul>            
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

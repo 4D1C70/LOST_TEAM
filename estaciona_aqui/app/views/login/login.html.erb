@@ -1,2 +1,26 @@
-<h1>Login#login</h1>
-<p>Find me in app/views/login/login.html.erb</p>
+<%= form_tag(login_path, method: 'post', :id => "msform", :class => "login") do %>
+
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Inicio de sesión</h2>
+  	<div class="input-group">
+  		<%= content_tag(:span, "" , :class => "input-group-addon login") do %>
+  			<%= content_tag(:span, "" , :class => "glyphicon glyphicon-envelope") %>
+  		<% end %>  		
+  		<%= text_field_tag(:email, "",{:class => "form-control"}) %>
+    </div>
+  	<div class="input-group">
+  		<%= content_tag(:span, "" , :class => "input-group-addon login") do %>
+  			<%= content_tag(:span, "" , :class => "glyphicon glyphicon-lock") %>
+  		<% end %>
+  		<%= text_field_tag(:password, "",{:class => "form-control"}) %>
+    </div>   
+    <input type="submit" name="submit" class="submit action-button" value="Ingresar" />
+
+  	<div class="input-group">
+	    <div class="text-center">
+			<a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">¿Olvidaste tu contraseña?</a>
+		</div>  		
+  	</div>
+  </fieldset>
+<% end %>

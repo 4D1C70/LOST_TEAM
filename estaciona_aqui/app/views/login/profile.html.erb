@@ -1,0 +1,184 @@
+<script type="text/javascript">
+	
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
+
+$(function () {
+	// body...
+
+	$(".next").click(function(){
+		if(animating) return false;
+		animating = true;
+		
+		current_fs = $(this).parent();
+		next_fs = $(this).parent().next();
+		
+		//activate next step on progressbar using the index of next_fs
+		$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+		
+		//show the next fieldset
+		next_fs.show(); 
+		//hide the current fieldset with style
+		current_fs.animate({opacity: 0}, {
+			step: function(now, mx) {
+				//as the opacity of current_fs reduces to 0 - stored in "now"
+				//1. scale current_fs down to 80%
+				scale = 1 - (1 - now) * 0.2;
+				//2. bring next_fs from the right(50%)
+				left = (now * 50)+"%";
+				//3. increase opacity of next_fs to 1 as it moves in
+				opacity = 1 - now;
+				current_fs.css({
+	        'transform': 'scale('+scale+')',
+	        'position': 'absolute'
+	      });
+				next_fs.css({'left': left, 'opacity': opacity});
+			}, 
+			duration: 800, 
+			complete: function(){
+				current_fs.hide();
+				animating = false;
+			}, 
+			//this comes from the custom easing plugin
+			easing: 'easeInOutBack'
+		});
+	});
+
+	$(".previous").click(function(){
+		if(animating) return false;
+		animating = true;
+		
+		current_fs = $(this).parent();
+		previous_fs = $(this).parent().prev();
+		
+		//de-activate current step on progressbar
+		$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+		
+		//show the previous fieldset
+		previous_fs.show(); 
+		//hide the current fieldset with style
+		current_fs.animate({opacity: 0}, {
+			step: function(now, mx) {
+				//as the opacity of current_fs reduces to 0 - stored in "now"
+				//1. scale previous_fs from 80% to 100%
+				scale = 0.8 + (1 - now) * 0.2;
+				//2. take current_fs to the right(50%) - from 0%
+				left = ((1-now) * 50)+"%";
+				//3. increase opacity of previous_fs to 1 as it moves in
+				opacity = 1 - now;
+				current_fs.css({'left': left});
+				previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+			}, 
+			duration: 800, 
+			complete: function(){
+				current_fs.hide();
+				animating = false;
+			}, 
+			//this comes from the custom easing plugin
+			easing: 'easeInOutBack'
+		});
+	});
+
+	/*$(".submit").click(function(){
+		return false;
+	});*/
+
+	
+
+});
+</script>
+<!-- multistep form -->
+<%= form_tag(login_create_path, method: 'post', :id => "msform") do %>
+        
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-list-alt">
+                    </span> Datos Generales</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">                    
+			  		<div class="input-group">  			
+				  		<%= content_tag(:span, "Nombres: " , :class => "input-group-addon") %>
+						<%= text_field_tag(:name, "", {:class => "form-control"}) %>
+		  			</div>
+				  	<div class="input-group">
+				  		<%= content_tag(:span, "Apellido Paterno: " , :class => "input-group-addon") %>
+				  		<%= text_field_tag(:surname, "",{:class => "form-control"}) %>
+				    </div>
+				  	<div class="input-group">
+				  		<%= content_tag(:span, "Apellido Materno: " , :class => "input-group-addon") %>
+				  		<%= text_field_tag(:maternal_surname, "",{:class => "form-control"}) %>
+				    </div>
+		  		</div>  	
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-lock">
+                    </span> Datos Personales</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="input-group">
+				  		<%= content_tag(:span, "Sexo: " , :class => "input-group-addon mb-3") %>
+					</div>
+					<div class="input-group"> 			
+				  		<%= content_tag(:span, "Tipo de Documento: " , :class => "input-group-addon") %>
+						<%= select_tag(:document_type, options_for_select([["DNI", "1"],["PASAPORTE", "2"],["CARNET DE EXTRANJERÍA", "3"]]), { :class => "form-control", :disabled => "disabled" }) %>
+						</div>
+				  	<div class="input-group">
+				  		<%= content_tag(:span, "N° de documento: " , :class => "input-group-addon") %>
+				  		<%= text_field_tag(:document_number, "",{:class => "form-control"}) %>
+				    </div>
+				  	<div class="input-group">
+				  		<%= content_tag(:span, "N° de Celular: " , :class => "input-group-addon") %>
+				  		<%= text_field_tag(:mobile_number, "",{:class => "form-control"}) %>
+				    </div>
+				  	<div class="input-group">
+				  		<%= content_tag(:span, "Fecha de nacimiento: " , :class => "input-group-addon") %>
+				  		<%= date_field_tag(:birthdate, nil, {:class => "form-control"}) %>	  		
+				    </div>
+            	</div>
+        	</div>
+    	</div>
+    	<div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-th-list">
+                    </span> Datos de la cuenta</a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">                    
+                    <div class="input-group">
+				  		<%= content_tag(:span, "Correo: " , :class => "input-group-addon") %>
+				  		<%= text_field_tag(:email, "",{:class => "form-control"}) %>
+				    </div>
+				  	<div class="input-group">
+				  		<%= content_tag(:span, "Contraseña: " , :class => "input-group-addon") %>
+				  		<%= text_field_tag(:password, "",{:class => "form-control"}) %>
+				    </div>
+				  	<div class="input-group">
+				  		<%= content_tag(:span, "Confirmar Contraseña: " , :class => "input-group-addon") %>
+				  		<%= text_field_tag(:password_confirm, "",{:class => "form-control"}) %>
+				    </div>
+				  	<div class="input-group">
+				  		<%= content_tag(:span, "Tipo de Usuario: " , :class => "input-group-addon") %>
+				  		<%= select_tag(:user_type, options_for_select([["PREMIUM", "1"],["VIP", "2"],["REGULAR", "3"]]), {:class => "form-control", :disabled => "disabled"}) %>
+				    </div>
+        		</div>
+    		</div>
+    	</div>
+    	<div class="row">
+		    <input type="button" class=" action-button" value="Cancelar" />
+		    <input type="submit" name="submit" class="submit action-button" value="Actualizar" />    		
+    	</div>
+    </div>
+<% end %>
