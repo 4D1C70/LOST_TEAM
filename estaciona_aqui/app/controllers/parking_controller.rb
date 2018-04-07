@@ -10,4 +10,10 @@ class ParkingController < ApplicationController
 
   def search
   end
+
+  def adittionalservices
+  end
+
+  def rent
+  end
 end
