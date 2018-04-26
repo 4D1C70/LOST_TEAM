@@ -6,7 +6,7 @@
   	<div class="input-group">
   		<%= content_tag(:span, "" , :class => "input-group-addon login") do %>
   			<%= content_tag(:span, "" , :class => "glyphicon glyphicon-envelope") %>
-  		<% end %>  		
+  		<% end %>
   		<%= text_field_tag(:email, "",{:class => "form-control"}) %>
     </div>
   	<div class="input-group">
@@ -14,13 +14,13 @@
   			<%= content_tag(:span, "" , :class => "glyphicon glyphicon-lock") %>
   		<% end %>
   		<%= text_field_tag(:password, "",{:class => "form-control"}) %>
-    </div>   
+    </div>
     <input type="submit" name="submit" class="submit action-button" value="Ingresar" />
 
   	<div class="input-group">
 	    <div class="text-center">
 			<a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">¿Olvidaste tu contraseña?</a>
-		</div>  		
+		</div>
   	</div>
   </fieldset>
 <% end %>
