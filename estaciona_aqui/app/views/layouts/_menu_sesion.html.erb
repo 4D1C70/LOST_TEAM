@@ -30,13 +30,18 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="./">Usuarios <span class="sr-only">(current)</span></a></li>
-              <li>              
-              <li>                
+              <li>
+              <li>
+              <%= link_to login_register_path, nil  do %>
+                <span class="glyphicon glyphicon-user"></span> Regístrate</a>
+              <% end %>
+              </li>
+              <li>
                 <%= link_to login_path, nil do %>
                   <span class="glyphicon glyphicon-log-in"></span> Accede</a></li>
                 <% end %>
               </li>
-              <ul class="nav navbar-nav">              
+              <ul class="nav navbar-nav">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario ... <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -47,7 +52,7 @@
                 </ul>
               </li>
             </ul>
-            </ul>            
+            </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
